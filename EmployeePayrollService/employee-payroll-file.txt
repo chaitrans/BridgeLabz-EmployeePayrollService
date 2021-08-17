@@ -1,3 +1,3 @@
-Id : 1	Name : Chaitra NS	Salary : 8800000.0
-Id : 2	Name : Geeta Biradar	Salary : 850000.0
-Id : 3	Name : Ganga S	Salary : 900000.0
+Id : 1	Name : Chaitra NS	Salary : 990000.0
+Id : 2	Name : Geeta B	Salary : 850000.0
+Id : 3	Name : Anamika Bhat	Salary : 900000.0
