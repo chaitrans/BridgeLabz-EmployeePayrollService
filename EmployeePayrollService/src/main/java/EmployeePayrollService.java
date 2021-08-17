@@ -3,11 +3,16 @@ import java.util.List;
 import java.util.Scanner;
 
 public class EmployeePayrollService {
+
+    public enum IOService {
+        CONSOLE_IO, FILE_IO, DB_IO, REST_IO
+    }
+
     public static final Scanner SC = new Scanner(System.in);
     private List<EmployeePayrollData> employeeList;
 
     public EmployeePayrollService() {
-        this.employeeList = new ArrayList<EmployeePayrollData>(); //created arraylist
+        this.employeeList = new ArrayList<EmployeePayrollData>();
     }
 
     public EmployeePayrollService(List<EmployeePayrollData> employeeList) {
@@ -26,15 +31,19 @@ public class EmployeePayrollService {
         employeeList.add(newEmployee);
     }
 
-    public void writeEmployeeDate() {
-        for (EmployeePayrollData o : employeeList)
-            System.out.println(o.toString());
+    public void writeEmployeeDdate(IOService ioType) {
+        if (ioType.equals(IOService.CONSOLE_IO)) {
+            for (EmployeePayrollData o : employeeList)
+                System.out.println(o.toString());
+        } else if (ioType.equals(IOService.FILE_IO)) {
+            new EmployeePayrollFileIOService().writeData(employeeList);
+        }
     }
 
-    public static void main(String[] args) {
-        EmployeePayrollService serviceObject = new EmployeePayrollService();
-        serviceObject.readEmployeeData();
-        serviceObject.writeEmployeeDate();
+    public long countEnteries(IOService ioType) {
+        if (ioType.equals(IOService.FILE_IO))
+            return new EmployeePayrollFileIOService().countEntries();
+        return 0;
     }
 
 }
